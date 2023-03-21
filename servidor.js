@@ -27,6 +27,6 @@ function recepcao(req, res) {
 
 http.createServer(recepcao).listen(PORTA, ENDEREÇO, () => {
     console.log('------------------');
-    console.log('Tô escutando tudo!');
+    console.log('Tô escutando tudo viu!');
     console.log('------------------');
 });
