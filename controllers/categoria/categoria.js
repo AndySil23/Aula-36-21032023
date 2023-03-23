@@ -1,25 +1,23 @@
-function cadastrar() {
-    return("Cadastro de categoria");
+const categorias = require("./model")
+
+function cadastrar(dados) {
+        categorias.push(dados);
+        return JSON.stringify(dados);
 };
 
 function buscar() {
-    return JSON.stringify([
-            {
-            'id': 1,
-            'nome': 'Roupas'
-        },
-            {
-            'id': 2,
-            'nome': 'Acessórios'
-        },
-            {
-            'id': 3,
-            'nome': 'Perfumaria'
-        }
-        
-    ])
+        return JSON.stringify(categorias)
+};
+
+function buscarUm(id) {
+        let busca = categorias.filter((cada) => {
+            return cada.id == id;
+        })
+        return JSON.stringify(busca)
 };
 
 module.exports = {
-    buscar, cadastrar
+    buscar, 
+    buscarUm, 
+    cadastrar
 };

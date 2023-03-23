@@ -6,6 +6,8 @@ const clienteRouter = require('./controllers/cliente/router')
 
 const app = express();
 
+app.use(express.json())
+
 app.use(categoriaRouter);
 app.use(produtoRouter);
 app.use(clienteRouter);

@@ -7,8 +7,12 @@ app.get('/categorias', (req, res) => {
     res.send(categoria.buscar());
 });
 
-app.post('//categorias', (req, res) => {
-    res.send(categoria.cadastrar());
+app.get('/categorias/:id', (req, res) => {
+    res.send(categoria.buscarUm(req.params.id));
+});
+
+app.post('/categorias', (req, res) => {
+    res.send(categoria.cadastrar(req.body));
 });
 
 module.exports = app;
