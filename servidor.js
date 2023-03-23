@@ -1,32 +1,21 @@
-const produto = require('./controllers/produto');
-const categoria = require('./controllers/categoria');
-const cliente = require('./controllers/cliente');
+const express = require('express');
 
-const http = require('http');
+const categoriaRouter = require('./controllers/categoria/router')
+const produtoRouter = require('./controllers/produto/router')
+const clienteRouter = require('./controllers/cliente/router')
+
+const app = express();
+
+app.use(categoriaRouter);
+app.use(produtoRouter);
+app.use(clienteRouter);
 
 const PORTA = 8000;
-const ENDEREÇO = 'localhost';
 
-function recepcao(req, res) {
-    let resposta = "Página não encontrada!";
-
-    switch(req.url){
-        case "/clientes":
-            resposta = cliente.buscar();
-        break;
-        case "/produtos":
-            resposta = produtos.buscar();
-        break;
-        case "/categorias":
-            resposta = categoria.cadastrar();
-        break;
-    };
-
-    res.end(resposta);
-};
-
-http.createServer(recepcao).listen(PORTA, ENDEREÇO, () => {
-    console.log('------------------');
-    console.log('Tô escutando tudo viu!');
-    console.log('------------------');
+app.listen(PORTA, () => {
+    console.log('------------------------');
+    console.log('---Tô escutando tudo!---');
+    console.log('------------------------');
 });
+
+
